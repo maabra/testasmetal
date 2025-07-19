@@ -25,14 +25,16 @@
         <img src="images/logo/asmetal_logo_text_w.png" alt="AS Metal Logotip" class="logo" />
       </a>
     </div>
+    <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <nav>
       <ul>
-        <li><a href="index.html">Početna</a></li>
         <li><a href="about.html">O&nbsp;Nama</a></li>
         <li><a href="services.html">Usluge</a></li>
-        <!-- <li><a href="references.html">Reference</a></li> -->
         <li><a href="gallery.html">Galerija</a></li>
-        <!-- <li><a href="news.html">Novosti</a></li> -->
         <li><a href="contact.html">Kontakt</a></li>
       </ul>
     </nav>
@@ -217,6 +219,67 @@
         window.location.href = 'gallery.html';
     });
 });
+
+    // Sticky navigation on scroll
+    let lastScrollTop = 0;
+    let ticking = false;
+    const header = document.querySelector('header');
+
+    function updateHeader() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > 100) {
+        header.classList.add('scrolled');
+        
+        if (scrollTop > lastScrollTop) {
+          // Scrolling down
+          header.classList.add('hide');
+        } else {
+          // Scrolling up
+          header.classList.remove('hide');
+        }
+      } else {
+        // At top of page
+        header.classList.remove('scrolled', 'hide');
+      }
+      
+      lastScrollTop = scrollTop;
+      ticking = false;
+    }
+
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', requestTick);
+  </script>
+
+  <!-- Mobile Menu Script -->
+  <script src="scripts/mobile-menu.js"></script>
+  <!-- Gallery Script for Hero Background -->
+  <script src="scripts/gallery.js"></script>
+  
+  <!-- Backup Mobile Menu - Direct Implementation -->
+  <script>
+    // Backup mobile menu implementation
+    setTimeout(function() {
+      const btn = document.querySelector('.mobile-menu-toggle');
+      const menu = document.querySelector('nav ul');
+      
+      if (btn && menu) {
+        btn.addEventListener('click', function() {
+          menu.classList.toggle('active');
+          btn.classList.toggle('active');
+        });
+        
+        // Make sure button is visible
+        btn.style.display = 'block';
+        console.log('Backup mobile menu activated');
+      }
+    }, 100);
   </script>
 </body>
 </html>

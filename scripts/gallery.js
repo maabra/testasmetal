@@ -88,7 +88,7 @@ class GalleryManager {
         });
     }
 
-    showImage(index) {
+    showImage(index, fromAutoRotate = false) {
         if (index < 0 || index >= this.images.length) return;
         
         this.currentImageIndex = index;
@@ -108,7 +108,11 @@ class GalleryManager {
         }
         
         this.updateThumbnailSelection();
-        this.stopAutoRotate();
+        
+        // Only stop auto-rotate if not called from auto-rotate itself
+        if (!fromAutoRotate) {
+            this.stopAutoRotate();
+        }
         
         // Fade efekt
         mainImage.style.opacity = '0.7';
@@ -128,9 +132,9 @@ class GalleryManager {
         });
     }
 
-    nextImage() {
+    nextImage(fromAutoRotate = false) {
         this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
-        this.showImage(this.currentImageIndex);
+        this.showImage(this.currentImageIndex, fromAutoRotate);
     }
 
     prevImage() {
@@ -140,7 +144,7 @@ class GalleryManager {
 
     startAutoRotate() {
         this.stopAutoRotate(); // Obriši postojeći interval
-        this.autoRotateInterval = setInterval(() => this.nextImage(), 4000);
+        this.autoRotateInterval = setInterval(() => this.nextImage(true), 4000);
     }
 
     stopAutoRotate() {
@@ -193,3 +197,5 @@ function prevImage() {
 function showImage(index) {
     if (galleryManager) galleryManager.showImage(index);
 }
+
+// ...existing code...

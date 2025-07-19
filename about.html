@@ -15,17 +15,21 @@
                 <img src="images/logo/asmetal_logo_text_w.png" alt="AS Metal Logotip" class="logo" />
             </a>
         </div>
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <nav>
             <ul>
                 <li><a href="index.html">Početna</a></li>
                 <li><a href="services.html">Usluge</a></li>
-                <!-- <li><a href="references.html">Reference</a></li> -->
                 <li><a href="gallery.html">Galerija</a></li>
-                <!-- <li><a href="news.html">Novosti</a></li> -->
                 <li><a href="contact.html">Kontakt</a></li>
             </ul>
         </nav>
     </header>
+    
     <main>
         <div class="main-flex-container">
             <section class="about-section">
@@ -134,5 +138,46 @@
     <!-- Facebook SDK -->
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/hr_HR/sdk.js#xfbml=1&version=v19.0"></script>
+    
+    <script>
+    // Sticky navigation on scroll
+    let lastScrollTop = 0;
+    let ticking = false;
+    const header = document.querySelector('header');
+
+    function updateHeader() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > 100) {
+        header.classList.add('scrolled');
+        
+        if (scrollTop > lastScrollTop) {
+          // Scrolling down
+          header.classList.add('hide');
+        } else {
+          // Scrolling up
+          header.classList.remove('hide');
+        }
+      } else {
+        // At top of page
+        header.classList.remove('scrolled', 'hide');
+      }
+      
+      lastScrollTop = scrollTop;
+      ticking = false;
+    }
+
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', requestTick);
+    </script>
+    
+    <!-- Mobile Menu Script -->
+    <script src="scripts/mobile-menu.js"></script>
 </body>
 </html>
