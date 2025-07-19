@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerija - AS Metal</title>
+    <link rel="icon" type="image/png" href="images\logo\asmetal_logo_w.png">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+          <a href="index.html">
+            <img src="images/logo/asmetal_logo_text_w.png" alt="AS Metal Logotip" class="logo" />
+          </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Početna</a></li>
+                <li><a href="about.html">O&nbsp;Nama</a></li>
+                <li><a href="services.html">Usluge</a></li>
+                <!-- <li><a href="references.html">Reference</a></li> -->
+                <!-- <li><a href="news.html">Novosti</a></li> -->
+                <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Galerija</h2>
+        <div class="gallery-container">
+            <img id="rotatingImage" class="rotating-image" src="images/galerija/slika1.jpg" alt="Galerija Slika">
+            <div class="gallery-info">
+                <span id="imageCounter">1 / 63</span>
+                <span id="imageTitle"></span>
+            </div>
+            <!-- Navigacijski gumbovi preko slike -->
+            <button class="gallery-nav-button gallery-nav-left" onclick="prevImage()" aria-label="Prethodna slika">
+                &#10094;
+            </button>
+            <button class="gallery-nav-button gallery-nav-right" onclick="nextImage()" aria-label="Sljedeća slika">
+                &#10095;
+            </button>
+        </div>
+        <div class="thumbnail-container" id="thumbnailContainer">
+            <!-- Sličice se generiraju dinamički -->
+        </div>
+    </main>
+    <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>A.S. METAL BRAVARIJA</h4>
+        <p>vl. Amir Saračević</p>
+        <p>Obrada metala, izrada i montaža ograda, nadstrešnica, portuna, metalnih konstrukcija</p>
+        <p>Vodnjan i Pula, Istra</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Kontakt</h4>
+        <p><strong>Telefon:</strong> <a href="tel:0955564468">095 556 4468</a></p>
+        <p><strong>Adresa:</strong> Labinska 8, 52100 Pula</p>
+        <p><strong>Županija:</strong> Istarska</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Radno Vrijeme</h4>
+        <p><strong>Ponedjeljak - Petak:</strong> 07:00 - 17:00</p>
+        <p><strong>Subota i nedjelja:</strong> Zatvoreno</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Pratite Nas</h4>
+        <div class="social-links">
+          <a href="https://www.facebook.com/bravarijametalis" class="fa fa-facebook" target="_blank" aria-label="Facebook"></a>
+          <a href="https://g.co/kgs/Pb3Sj9W" class="fa fa-google" target="_blank" aria-label="Google"></a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p><span title="Izradio Matej Abramović">&copy; 2025 A.S. METAL</span></p>
+    </div>
+  </footer>
+    <script src="scripts/gallery.js"></script>
+</body>
+</html>
