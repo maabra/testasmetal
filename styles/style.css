@@ -5,6 +5,25 @@ body#index-page .service-item {
   align-items: flex-start;
   justify-content: flex-start;
 }
+
+/* CONSOLIDATED: All index page service h3 styles */
+body#index-page .services h3 {
+  min-height: 48px;
+  max-height: 48px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  padding: 0 8px;
+  position: relative;
+  border-bottom: 3px solid var(--primary-red);
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* COMMENTED OUT - DUPLICATE STYLES:
 body#index-page .services h3 {
 min-height: 72px;
 max-height: 72px;
@@ -22,26 +41,13 @@ border-bottom: 3px solid var(--primary-red);
 margin-bottom: 0 !important;
 width: 100%;
 }
-/* Uniform headline height for index.html services section */
-/* Uniform headline height for index.html services section (h3 only) */
-/* Uniform headline height and underline position for index.html services section (h3 only) */
-body#index-page .services h3 {
-  min-height: 48px;
-  max-height: 48px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  text-align: center;
-  padding: 0 8px;
-  position: relative;
-}
+
 body#index-page .services h3 {
   border-bottom: 3px solid var(--primary-red);
   width: 100%;
   margin-bottom: 0;
 }
+*/
 /* Contact header: logo left, text right on desktop; stacked on mobile */
 @media (min-width: 769px) {
   .contact-header {
@@ -78,9 +84,9 @@ body#index-page .services h3 {
 }
 .contact-logo-desktop,
 .contact-logo-mobile {
-  width: 1000%;
+  width: 100%; /* FIXED: was 1000% */
   height: auto;
-  max-width: 200;
+  max-width: 200px; /* FIXED: added px unit */
   display: block;
   margin: 0 auto 20px auto;
 }
@@ -205,13 +211,9 @@ body#index-page .services h3 {
   --mobile-nav-size: 16px;
 }
 
-/* Globalna optimizacija kvalitete slika */
+/* CONSOLIDATED: Global image quality optimization */
 * {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
-  box-sizing: border-box; /* Dodano za bolje responsive ponašanje */
+  box-sizing: border-box; /* Better responsive behavior */
 }
 
 img {
@@ -220,9 +222,19 @@ img {
   image-rendering: crisp-edges;
   image-rendering: high-quality;
   -ms-interpolation-mode: bicubic;
-  max-width: 100%; /* Osigurava da slike ne prelaze kontejner */
-  height: auto; /* Održava aspect ratio */
+  max-width: 100%; /* Ensures images don't overflow container */
+  height: auto; /* Maintains aspect ratio */
 }
+
+/* COMMENTED OUT - CONFLICTING IMAGE RENDERING IN UNIVERSAL SELECTOR:
+* {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  box-sizing: border-box;
+}
+*/
 
 /* Osnovni stilovi */
 body {
@@ -290,24 +302,21 @@ header.scrolled {
 
 /* Mobile menu toggle button */
 .mobile-menu-toggle {
-  display: none;
+  display: none; /* Hidden by default, shown in mobile media query */
   background: var(--dark-gray);
   border: 2px solid var(--metallic-border);
   color: var(--text-light);
   font-size: 18px;
-  padding: 10px;
+  padding: 10px 6px; /* CONSOLIDATED: removed duplicate padding */
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.2s ease;
   min-height: 48px;
   width: 52px;
-  padding-left: 6px;
-  padding-right: 6px;
   position: relative;
   z-index: 1001;
   box-sizing: border-box;
   flex-shrink: 0;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -528,7 +537,7 @@ p {
 footer {
   background: var(--dark-gray);
   color: var(--text-light);
-  margin-top: 40px;
+  margin-top: auto; /* ADDED: for flex layout from duplicate footer */
   border-top: 4px solid var(--primary-red);
   padding: 40px 20px 20px 20px;
 }
@@ -987,17 +996,26 @@ footer {
   100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* Hero logo */
+/* CONSOLIDATED: Hero logo styles */
 .hero-logo {
   position: static;
-  display: inline-block;
-  width: 200px;
+  display: block;
+  width: clamp(200px, 40vw, 600px); /* Responsive logo size */
   height: auto;
   z-index: 1;
   opacity: 1;
-  margin-bottom: 20px;
+  margin: 0 auto 20px auto;
   margin-top: -10px;
 }
+
+/* COMMENTED OUT - DUPLICATE HERO LOGO STYLE:
+.hero-logo {
+  width: clamp(200px, 40vw, 600px);
+  height: auto;
+  margin: 0 auto 20px auto;
+  display: block;
+}
+*/
 .worked-with {
   padding: 50px 20px;
   background: var(--secondary-gray);
@@ -1096,7 +1114,7 @@ footer {
   font-weight: bold;
 }
 
-/* Stranica kontakt */
+/* COMMENTED OUT - DUPLICATE MAIN ELEMENT STYLE:
 main {
   max-width: 1200px;
   margin: 40px auto;
@@ -1106,6 +1124,7 @@ main {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   padding: 32px 28px;
 }
+*/
 
 h2, h3 {
   color: var(--primary-blue);
@@ -1219,23 +1238,25 @@ h2, h3 {
     gap: 18px;
   }
   
+  /* CONSOLIDATED: All phone-section mobile styles */
   .phone-section {
     position: absolute;
     top: 0;
     right: 0;
     margin: 0;
-    box-shadow: none;
-    transform: none;
-  }
-}
-
-/* Adjusted .phone-section for mobile */
-@media (max-width: 768px) {
-  .phone-section {
     padding: 8px 6px;
     font-size: 0.8em;
     margin-right: 16px;
     box-shadow: none;
+    transform: scale(0.8);
+  }
+
+  /* Business hours specific positioning */
+  #business-hours .phone-section {
+    top: 10px;
+    right: 10px;
+    transform: scale(0.7);
+    min-width: auto;
   }
 
   .phone-label {
@@ -1247,13 +1268,23 @@ h2, h3 {
   }
 }
 
-/* Shrink the entire .phone-section for mobile */
+/* COMMENTED OUT - DUPLICATE MOBILE PHONE-SECTION STYLES:
+@media (max-width: 768px) {
+  .phone-section {
+    padding: 8px 6px;
+    font-size: 0.8em;
+    margin-right: 16px;
+    box-shadow: none;
+  }
+}
+
 @media (max-width: 768px) {
   .phone-section {
     transform: scale(0.8);
     margin-right: 16px;
   }
 }
+*/
 
 #contact-info:hover, #business-hours:hover, #location:hover, #social-media:hover, #call-to-action:hover {
   border-color: var(--primary-red);
@@ -1293,6 +1324,7 @@ body {
   min-height: 100vh;
 }
 
+/* COMMENTED OUT - DUPLICATE SIMPLE FOOTER (conflicts with enhanced footer above):
 footer {
   margin-top: auto;
   background: var(--dark-gray);
@@ -1301,9 +1333,11 @@ footer {
   padding: 20px;
   border-top: 4px solid var(--primary-red);
 }
+*/
 
-/* Gumbi */
-button {
+/* CONSOLIDATED: All button styles */
+button,
+footer button {
   background: var(--primary-blue);
   color: var(--text-light);
   border: 2px solid var(--primary-red);
@@ -1317,13 +1351,14 @@ button {
   min-height: 44px; /* Accessibility - minimum touch target */
 }
 
-button:hover {
+button:hover,
+footer button:hover {
   background: var(--primary-red);
   border-color: var(--primary-blue);
   transform: translateY(-2px);
 }
 
-/* Gumbi u footeru */
+/* COMMENTED OUT - DUPLICATE FOOTER BUTTON STYLES:
 footer button {
   background: var(--primary-blue);
   color: var(--text-light);
@@ -1341,6 +1376,7 @@ footer button:hover {
   background: var(--primary-red);
   transform: translateY(-2px);
 }
+*/
 
 /* Linkovi */
 a {
@@ -1385,12 +1421,14 @@ a:hover {
   width: 100%;
 }
 
+/* COMMENTED OUT - DUPLICATE HERO LOGO DEFINITION (already consolidated above)
 .hero-logo {
-  width: clamp(200px, 40vw, 600px); /* Responsive logo size */
+  width: clamp(200px, 40vw, 600px);
   height: auto;
   margin: 0 auto 20px auto;
   display: block;
 }
+*/
 
 .hero h1 {
   font-size: clamp(1.5em, 5vw, 3em); /* Responsive heading */
@@ -1727,6 +1765,7 @@ main > section:nth-child(even) {
   }
 }
 
+/* COMMENTED OUT - DUPLICATE SERVICES-MAIN SECTION STYLES (conflicts with earlier definition):
 .services-main section {
   display: flex;
   align-items: center;
@@ -1768,6 +1807,7 @@ main > section:nth-child(even) {
   color: var(--primary-blue);
   margin-bottom: 20px;
 }
+*/
 
 @media (max-width: 900px) {
   .services-main section {
@@ -1782,6 +1822,7 @@ main > section:nth-child(even) {
   }
 }
 
+/* COMMENTED OUT - POTENTIALLY UNUSED CONTACT-MAIN SELECTOR:
 .contact-main > section {
   max-width: 1200px;
   margin: 40px auto;
@@ -1790,6 +1831,7 @@ main > section:nth-child(even) {
   border-radius: 5px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+*/
 
 
 .novosti-widget-wrapper {
@@ -2265,6 +2307,7 @@ body {
     position: relative;
   }
 
+  /* COMMENTED OUT - DUPLICATE PHONE-SECTION (conflicts with earlier consolidated version):
   .phone-section {
     position: absolute !important;
     top: 10px !important;
@@ -2284,6 +2327,7 @@ body {
   .phone-number {
     font-size: 1em !important;
   }
+  */
 
   /* Shrink contact logo on mobile */
   .contact-logo {
@@ -2291,3 +2335,60 @@ body {
     margin-bottom: 16px !important;
   }
 }
+
+/* 
+====================================================================
+CSS CLEANUP SUMMARY - Major overlaps and duplicates commented out:
+====================================================================
+
+1. DUPLICATE INDEX PAGE SERVICE STYLES: 
+   - Consolidated 3 conflicting body#index-page .services h3 selectors
+   - Kept the most comprehensive version with proper styling
+
+2. CONTACT LOGO STYLES: 
+   - Fixed width: 1000% bug (changed to 100%)
+   - Added missing px unit to max-width: 200
+
+3. MOBILE MENU TOGGLE: 
+   - Removed conflicting display properties (display: none and display: flex)
+   - Consolidated padding properties
+
+4. IMAGE RENDERING CONFLICTS: 
+   - Removed conflicting image-rendering: pixelated from universal selector
+   - Kept high-quality rendering for img elements only
+
+5. MAIN ELEMENT DUPLICATES: 
+   - Commented out duplicate main element definition 
+   - Kept the primary definition with proper responsive width
+
+6. HERO LOGO DUPLICATES: 
+   - Consolidated multiple .hero-logo definitions
+   - Maintained responsive sizing with clamp()
+
+7. FOOTER DUPLICATES: 
+   - Commented out simple footer that conflicted with enhanced footer
+   - Added margin-top: auto to enhanced footer for flex layout
+
+8. BUTTON DUPLICATES: 
+   - Consolidated button and footer button styles
+   - Removed redundant footer-specific button styles
+
+9. SERVICES-MAIN SECTION DUPLICATES: 
+   - Commented out conflicting .services-main section definitions
+   - Kept the systematic layout version
+
+10. PHONE-SECTION DUPLICATES: 
+    - Consolidated 3 separate mobile phone-section definitions
+    - Added business-hours specific positioning as modifier
+
+11. CONTACT-MAIN SELECTOR: 
+    - Commented out potentially unused .contact-main > section rule
+
+12. MEDIA QUERY EFFICIENCY: 
+    - Noted excessive number of separate @media (max-width: 768px) blocks
+    - Recommendation: Consider consolidating for better maintainability
+
+TOTAL CLEANED: ~200 lines of duplicate/conflicting CSS
+REMAINING WORK: Media query consolidation could reduce file size further
+====================================================================
+*/
