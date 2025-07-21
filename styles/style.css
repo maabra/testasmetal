@@ -26,8 +26,8 @@ width: 100%;
 /* Uniform headline height for index.html services section (h3 only) */
 /* Uniform headline height and underline position for index.html services section (h3 only) */
 body#index-page .services h3 {
-  min-height: 48px;
-  max-height: 48px;
+  min-height: 25px;
+  max-height: 25px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -200,7 +200,7 @@ body#index-page .services h3 {
   
   /* Mobile font sizes */
   --base-font-size: 16px;
-  --mobile-font-size: 14px;
+  --mobile-font-size: 12px;
   --mobile-header-size: 20px;
   --mobile-nav-size: 16px;
 }
@@ -1366,7 +1366,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('images/galerija/image1.jpg');
+  background-image: url('../images/galerija/slika1.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1745,6 +1745,7 @@ main > section:nth-child(even) {
 @media (max-width: 700px) {
   .splash-text {
     font-size: 2em !important;
+    padding: 0 20px;
   }
   .splash-text p {
     font-size: 1em !important;

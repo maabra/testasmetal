@@ -14,6 +14,13 @@ class GalleryManager {
     }
 
     async init() {
+        // Check if we're on a page with gallery elements
+        const thumbnailContainer = document.getElementById("thumbnailContainer");
+        if (!thumbnailContainer) {
+            // Not on gallery page, skip gallery initialization
+            return;
+        }
+        
         await this.discoverImages();
         this.generateThumbnails();
         this.preloadImages();
@@ -50,6 +57,11 @@ class GalleryManager {
 
     generateThumbnails() {
         const container = document.getElementById("thumbnailContainer");
+        if (!container) {
+            // Thumbnail container not found, skip thumbnail generation
+            return;
+        }
+        
         container.innerHTML = "";
         
         this.images.forEach((imagePath, index) => {
@@ -95,6 +107,11 @@ class GalleryManager {
         const mainImage = document.getElementById("rotatingImage");
         const imageCounter = document.getElementById("imageCounter");
         
+        // Only update if elements exist (we're on gallery page)
+        if (!mainImage) {
+            return;
+        }
+        
         // Koristi cache ako je dostupan
         if (this.imageCache.has(index)) {
             mainImage.src = this.imageCache.get(index).src;
@@ -123,6 +140,11 @@ class GalleryManager {
 
     updateThumbnailSelection() {
         const thumbnails = document.querySelectorAll('.thumbnail');
+        if (thumbnails.length === 0) {
+            // No thumbnails found, skip selection update
+            return;
+        }
+        
         thumbnails.forEach((thumb, index) => {
             if (index === this.currentImageIndex) {
                 thumb.classList.add('active');
@@ -182,7 +204,11 @@ class GalleryManager {
 // Pokreni galeriju kad se stranica učita
 let galleryManager;
 window.addEventListener('DOMContentLoaded', () => {
-    galleryManager = new GalleryManager();
+    // Only create gallery manager if we're on a page with gallery elements
+    const thumbnailContainer = document.getElementById("thumbnailContainer");
+    if (thumbnailContainer) {
+        galleryManager = new GalleryManager();
+    }
 });
 
 // Podrška za postojeće gumbe
