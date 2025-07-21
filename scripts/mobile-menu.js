@@ -8,10 +8,6 @@
         // Get elements
         toggleButton = document.querySelector('.mobile-menu-toggle');
         navUl = document.querySelector('nav ul');
-        
-        // Debug: Check if elements exist
-        console.log('Toggle button:', toggleButton);
-        console.log('Nav UL:', navUl);
 
         if (!toggleButton || !navUl) {
             console.warn('Mobile menu elements not found');
@@ -26,7 +22,6 @@
         toggleButton.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Menu toggle clicked');
             
             const isActive = navUl.classList.contains('active');
             
@@ -61,14 +56,12 @@
 
         // Set body class to indicate menu is ready
         document.body.classList.add('menu-ready');
-        console.log('Mobile menu initialized successfully');
     }
     
     function openMenu() {
         if (navUl && toggleButton) {
             navUl.classList.add('active');
             toggleButton.classList.add('active');
-            console.log('Menu opened');
         }
     }
     
@@ -76,7 +69,6 @@
         if (navUl && toggleButton) {
             navUl.classList.remove('active');
             toggleButton.classList.remove('active');
-            console.log('Menu closed');
         }
     }
 

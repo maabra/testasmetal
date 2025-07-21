@@ -166,12 +166,27 @@
     </div>
   </section>
   -->
+  <!-- 
   <section class="reviews">
     <h2>Recenzije</h2>
-    <!-- Elfsight widget recenzije -->
-    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+    Elfsight widget recenzije with error handling -->
+    <script>
+      window.addEventListener('error', function(e) {
+        if (e.filename && e.filename.includes('elfsight')) {
+          console.warn('Elfsight widget error caught:', e.message);
+          // Hide the widget container if there's an error
+          const widget = document.querySelector('.elfsight-app-3afd1cf2-0c91-431d-a7f8-0dcdf7dc09b9');
+          if (widget) {
+            widget.style.display = 'none';
+          }
+          return true; // Prevent the error from propagating
+        }
+      });
+    </script>
+    <script src="https://static.elfsight.com/platform/platform.js" async onerror="console.warn('Failed to load Elfsight widget')"></script>
     <div class="elfsight-app-3afd1cf2-0c91-431d-a7f8-0dcdf7dc09b9" data-elfsight-app-lazy></div>
   </section>
+  
 
   <footer>
     <div class="footer-content">
