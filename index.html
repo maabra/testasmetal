@@ -19,10 +19,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+  <noscript>
+    <style>
+      .mobile-menu-toggle { display: flex !important; visibility: visible !important; }
+    </style>
+  </noscript>
+  <script>
+    // Fallback: if JS fails, ensure hamburger is visible
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!document.body.classList.contains('menu-ready')) {
+        document.querySelector('.mobile-menu-toggle').style.display = 'flex';
+        document.querySelector('.mobile-menu-toggle').style.visibility = 'visible';
+      }
+    });
+  </script>
   <header>
     <div class="logo-container">
       <a href="index.html">
-        <img src="images/logo/asmetal_logo_text_w.png" alt="AS Metal Logotip" class="logo" />
+        <img src="images/logo/asmetal_logo_text_w.png" alt="AS Metal Logotip" class="logo logo-desktop" />
+        <img src="images/logo/asmetal_logo_w.png" alt="AS Metal Logo Small" class="logo logo-mobile" />
       </a>
     </div>
     <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
@@ -30,6 +45,7 @@
       <span></span>
       <span></span>
     </button>
+
     <nav>
       <ul>
         <li><a href="about.html">O&nbsp;Nama</a></li>
@@ -97,18 +113,18 @@
         </a>
       </div>
       <div class="service-item">
-        <a href="services.html#metalne-konstrukcije">
-          <h3>Metalne konstrukcije</h3>
-          <p>
-            Projektiranje i izrada svih vrsta metalnih konstrukcija za hale, skladišta, stepeništa i platforme. Dugotrajnost, otpornost i precizna izvedba.
-          </p>
-        </a>
-      </div>
-      <div class="service-item">
         <a href="services.html#zavarivanje">
           <h3>Zavarivanje</h3>
           <p>
             Profesionalne usluge varenja i zavarivanja svih vrsta metala. Kvalitetna izrada, popravci i montaža prema najvišim standardima.
+          </p>
+        </a>
+      </div>
+      <div class="service-item">
+        <a href="services.html#metalne-konstrukcije">
+          <h3>Metalne konstrukcije</h3>
+          <p>
+            Projektiranje i izrada svih vrsta metalnih konstrukcija za hale, skladišta, stepeništa i platforme. Dugotrajnost, otpornost i precizna izvedba.
           </p>
         </a>
       </div>

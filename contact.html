@@ -12,7 +12,8 @@
     <header>
         <div class="logo-container">
             <a href="index.html">
-            <img src="images/logo/asmetal_logo_text_w.png" alt="AS Metal Logotip" class="logo" />
+                <img src="images/logo/asmetal_logo_text_w.png" alt="AS Metal Logotip" class="logo logo-desktop" />
+                <img src="images/logo/asmetal_logo_w.png" alt="AS Metal Logo Small" class="logo logo-mobile" />
             </a>
         </div>
         <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
@@ -33,32 +34,30 @@
     <main class="contact-main">
         <h2>Kontakt</h2>
         <section id="contact-info">
-            <div class="contact-header">
-                <img src="images/logo/asmetal_logo.png" alt="AS Metal Logo" class="contact-logo">
-                <div class="company-info">
-                    <h2>A.S. METAL BRAVARIJA</h2>
-                    <p class="company-description">Obrada metala, izrada i montaža ograda, nadstrešnica, portuna, metalnih konstrukcija</p>
-                    
-                </div>
-            </div>
-            <div class="contact-details">
-                <div class="owner-info">
-                    <p class="location-tag">Vodnjan i Pula, Istra</p>
-                    <p class="owner-name">vl. Amir Saračević</p>
-                </div>
-                <div class="phone-section">
-                    <p class="phone-label">Telefon:</p>
-                    <a href="tel:0955564468" class="phone-number">095 556 4468</a>
+            <div class="contact-header company-flex" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 0;">
+                <img src="images/logo/asmetal_logo_text.png" alt="AS Metal Logo" class="contact-logo" style="max-width: 400px; height: auto; margin-bottom: 24px;" />
+                <!-- <h2 style="margin: 0 0 18px 0; font-size: 2.4em; text-align: center;"></h2> -->
+                <p class="company-description" style="margin: 0 0 18px 0; font-size: 1.3em; text-align: center;">Obrada metala, izrada i montaža ograda, nadstrešnica, portuna, metalnih konstrukcija</p>
+                <div class="owner-info" style="margin-top: 18px; text-align: center;">
+                    <p class="location-tag" style="font-size: 1.2em;">Vodnjan i Pula, Istra</p>
+                    <p class="owner-name" style="font-size: 1.2em;">vl. Amir Saračević</p>
+                    <p></p>
+                    <p class="location-tag" style="color: var(--text-dark); font-size: 1.2em; font-weight: bold; margin: 0 0 8px 0;">Telefon:</p>
+                <a href="tel:0955564468" class="owner-name" style="color: var(--primary-red); font-size: 1.5em; font-weight: bold; text-decoration: none;">095 556 4468</a>
                 </div>
             </div>
         </section>
 
-        <section id="business-hours">
-            <h3>Radno Vrijeme</h3>
-            <ul>
-                <li>Ponedjeljak - Petak: 07:00 - 17:00</li>
-                <li>Nedjelja: Zatvoreno</li>
-            </ul>
+        <section id="business-hours" style="display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; gap: 32px;">
+            <div style="flex: 1;">
+                <h3>Radno Vrijeme</h3>
+                <ul>
+                    <li>Ponedjeljak - Petak: 07:00 - 17:00</li>
+                    <li>Nedjelja: Zatvoreno</li>
+                </ul>
+            </div>
+        
+        </section>
         </section>
 
         <section id="location">
