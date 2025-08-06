@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Optimizacija za high-DPI ekrane i kvalitetu slika -->
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="theme-color" content="#1a1a1a">
@@ -11,7 +10,6 @@
   <meta name="description" content="AS Metal bravarija - izrada i montaža metalnih konstrukcija, ograda, portuna i nadstrešnica. Kvaliteta, profesionalnost i dugogodišnje iskustvo u Puli i Istri.">
   <meta name="keywords" content="bravarija, metalne konstrukcije, ograde, portuni, nadstrešnice, zavarivanje, Pula, Istra, AS Metal">
   <link rel="icon" type="image/png" href="images\logo\asmetal_logo_w.png">
-  <!-- Preload hero slika za bolju kvalitetu i brzinu -->
   <link rel="preload" href="images/galerija/slika52.jpg" as="image" type="image/jpeg">
   <link rel="preload" href="images/galerija/slika10.jpg" as="image" type="image/jpeg">
   <link rel="preload" href="images/galerija/slika14.jpg" as="image" type="image/jpeg">
@@ -25,7 +23,6 @@
     </style>
   </noscript>
   <script>
-    // Fallback: if JS fails, ensure hamburger is visible
     document.addEventListener('DOMContentLoaded', function() {
       if (!document.body.classList.contains('menu-ready')) {
         document.querySelector('.mobile-menu-toggle').style.display = 'flex';
@@ -138,48 +135,15 @@
       </div>
     </div>
   </section>
-  <!--
-  testna verzija recenzija
-  <section class="reviews">
-    <h2>Recenzije</h2>
-    <div id="reviews-container">
-      <div class="review">
-        <h3>Demir</h3>
-        <p>"Profesionalna izrada i ugradnja. Sve kako smo se dogovorili, dečki su super. Sve pohvale i jako kreativno."</p>
-        <div class="rating">Ocjena: 5 / 5</div>
-      </div>
-      <div class="review">
-        <h3>"PepeSchool"</h3>
-        <p>"Odlična usluga i kvaliteta. Cijena vrlo pristupačna. Sve pohvale!! 💯 … "</p>
-        <div class="rating">Ocjena: 5 / 5</div>
-      </div>
-      <div class="review">
-        <h3>Matej Abramović</h3>
-        <p>"Sve naše želje ispoštovane uz dodatni trud. Vrhunska izrada, uloženi trud veći od očekivanog a očekivanja su bila visoka, gdin Amir je definicija profesionalca a i čovjeka, ispoštivani svi rokovi, izuzetno zadovoljni i naše iskrene preporuke. Imali smo sreću da smo ne poznavajući majstore u Puli slučajno naletjeli na najboljega. Naša kuća i okućnica su 2x dobile na estetici ovom ogradom. -S. i M."</p>
-        <div class="rating">Ocjena: 5 / 5</div>
-      </div>
-      <div class="review">
-        <h3>"Aminela Saračević"</h3>
-        <p></p>
-        <div class="rating">Ocjena: 5 / 5</div>
-      </div>
-    </div>
-  </section>
-  -->
-  <!-- 
-  <section class="reviews">
-    <h2>Recenzije</h2>
-    Elfsight widget recenzije with error handling -->
     <script>
       window.addEventListener('error', function(e) {
         if (e.filename && e.filename.includes('elfsight')) {
           console.warn('Elfsight widget error caught:', e.message);
-          // Hide the widget container if there's an error
           const widget = document.querySelector('.elfsight-app-3afd1cf2-0c91-431d-a7f8-0dcdf7dc09b9');
           if (widget) {
             widget.style.display = 'none';
           }
-          return true; // Prevent the error from propagating
+          return true;
         }
       });
     </script>
@@ -242,18 +206,16 @@
       showHeroBg(currentHero);
     }
 
-    // Start slider
-    setInterval(nextHeroBg, 5000); // Change every 5 seconds
+    setInterval(nextHeroBg, 5000);
     showHeroBg(currentHero);
 
     document.querySelectorAll('.hero-bg').forEach(function(bg) {
-      bg.style.cursor = 'pointer'; // Change cursor to pointer
+      bg.style.cursor = 'pointer';
       bg.addEventListener('click', function() {
         window.location.href = 'gallery.html';
     });
 });
 
-    // Sticky navigation on scroll
     let lastScrollTop = 0;
     let ticking = false;
     const header = document.querySelector('header');
@@ -265,14 +227,14 @@
         header.classList.add('scrolled');
         
         if (scrollTop > lastScrollTop) {
-          // Scrolling down
+          
           header.classList.add('hide');
         } else {
-          // Scrolling up
+          
           header.classList.remove('hide');
         }
       } else {
-        // At top of page
+        
         header.classList.remove('scrolled', 'hide');
       }
       
@@ -290,12 +252,9 @@
     window.addEventListener('scroll', requestTick);
   </script>
 
-  <!-- Mobile Menu Script -->
   <script src="scripts/mobile-menu.js"></script>
-  <!-- Gallery Script for Hero Background -->
   <script src="scripts/gallery.js"></script>
   
-  <!-- Backup Mobile Menu - Direct Implementation -->
   
 </body>
 </html>
